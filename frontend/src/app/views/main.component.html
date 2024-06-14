@@ -1,0 +1,21 @@
+<!-- View 1 -->
+<div style="text-align:center"> 
+    <div>
+        <webcam [height]="height" [width]="width"
+                [trigger]="triggerObservable"
+                [imageType]="imageType"
+                (imageCapture)="handleImage($event)"                
+        ></webcam>
+        <div>
+            Aspect : 
+            <span *ngFor="let a of aspectRatio; let i = index">
+                <input type="radio" value=i name="aspectRatio" (change)="handleAspectRatio(i)" style="margin-left: 30px" [defaultChecked]="defaultAspectRatio(i)">
+                <!-- <input type="radio" value=i name="aspectRatio" (change)="handleAspectRatio(i)" style="margin-left: 30px"> -->
+                <label>{{ a.aspect }}</label>
+            </span>
+        </div>
+        <br>
+        <button class="actionBtn" (click)="triggerSnapshot();">Snap</button>  
+        <br>
+    </div>
+</div>

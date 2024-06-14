@@ -1,0 +1,22 @@
+<!-- View 2 -->
+<div style="text-align:center"> 
+    <img [src]="webcamImage.imageAsDataUrl">
+    <form [formGroup]="form" (submit)="post()">
+        <div>
+            <p> Title </p>
+            <input type="text" formControlName="title" placeholder="Image title" style="width: 500px;">
+            <div *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched" style="color: red;">
+                Title is require
+            </div>
+            <div *ngIf="form.get('title')?.hasError('minlength')" style="color: red;">
+                Minimum 5 of character is require
+            </div>
+        </div>
+        <p> Comments </p>
+        <textarea formControlName="comments" placeholder="Put your comment here..." style="width: 500px;" rows="4" cols="50"></textarea>
+        <div>
+            <button type="button" (click)="BacktoMain()">Back</button>
+            <button type="submit" [disabled]="form.invalid" style="margin-left: 15px;">Post</button>
+        </div>
+    </form>
+</div>
